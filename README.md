@@ -1,16 +1,30 @@
-# React + Vite
+Comandos:
+Para inicializar el proyecto: npm create vite@latest . -- --template react
+dependencias: 
+npm install react-router-dom @tanstack/react-query react-hook-form zod @hookform/resolvers
+tailwind:
+npm install -D tailwindcss@3 postcss autoprefixer
+ejecucion de tailwind:
+npx tailwindcss init -p
+Para inicializar y ejcutar el proyecto:
+npm run dev
+Informacion principal:
+# PokéApp 🔴
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web que consume la PokeAPI, desarrollada como prueba técnica.
 
-Currently, two official plugins are available:
+## Tecnologías usadas
+- React + Vite
+- React Query
+- React Hook Form
+- Tailwind CSS v3
+- Zod
+- React Router
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Cómo correr el proyecto
+1. Clonar el repositorio
+2. Instalar dependencias: `npm install`
+3. Correr en local: `npm run dev`
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Niveles
+- `level-1` → Lista de pokémon con búsqueda y skeletons
