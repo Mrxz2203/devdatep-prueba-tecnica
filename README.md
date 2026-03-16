@@ -1,15 +1,15 @@
-Comandos:
+#Comandos:
 Para inicializar el proyecto: npm create vite@latest . -- --template react
-dependencias: 
+#dependencias: 
 npm install react-router-dom @tanstack/react-query react-hook-form zod @hookform/resolvers
-tailwind:
+#tailwind:
 npm install -D tailwindcss@3 postcss autoprefixer
-ejecucion de tailwind:
+#ejecucion de tailwind:
 npx tailwindcss init -p
-Para inicializar y ejcutar el proyecto:
+#Para inicializar y ejcutar el proyecto:
 npm run dev
 Informacion principal:
-# PokéApp 🔴
+# PokéApp - Pagina Devdatep 🔴
 
 Aplicación web que consume la PokeAPI, desarrollada como prueba técnica.
 
