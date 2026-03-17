@@ -6,9 +6,9 @@ npm install react-router-dom @tanstack/react-query react-hook-form zod @hookform
 npm install -D tailwindcss@3 postcss autoprefixer
 # Ejecucion de tailwind:
 npx tailwindcss init -p
-# Para inicializar y ejcutar el proyecto:
+# Para inicializar y ejecutar el proyecto:
 npm run dev
-Informacion principal:
+# Informacion principal:
 # PokéApp - Pagina Devdatep 🔴
 
 Aplicación web que consume la PokeAPI, desarrollada como prueba técnica.
@@ -27,4 +27,4 @@ Aplicación web que consume la PokeAPI, desarrollada como prueba técnica.
 3. Correr en local: `npm run dev`
 
 ## Niveles
-- `level-1` → Lista de pokémon con búsqueda y skeletons
+- `Nivel-1` → Lista de pokémon con búsqueda y skeletons
