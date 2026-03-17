@@ -11,5 +11,6 @@ function PokemonSkeleton() {
     </div>
   )
 }
-
+// animate pulse es la animacion para el parpadeo gris
+// rounded full es la imagen de cada pokemon 
 export default PokemonSkeleton

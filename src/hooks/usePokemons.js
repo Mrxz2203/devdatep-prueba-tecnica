@@ -1,4 +1,6 @@
+// uso de reactquery como puente de informacion del api en useQuery
 import { useQuery } from '@tanstack/react-query'
+// maneja el cache de los datos 
 import { getPokemonDetail, getPokemons } from '../services/pokemonService'
 
 export const usePokemons = ({ limit = 20, offset = 0 } = {}) => {
@@ -7,7 +9,8 @@ export const usePokemons = ({ limit = 20, offset = 0 } = {}) => {
     queryFn: () => getPokemons({ limit, offset }),
   })
 }
-
+// querykey funciona como peticion unica de cada pokemon 
+// queryfn funcion del servicio para traer los datos de cada pedido realizado
 export const usePokemonDetail = (nameOrId) => {
   return useQuery({
     queryKey: ['pokemon', nameOrId],
@@ -15,3 +18,5 @@ export const usePokemonDetail = (nameOrId) => {
     enabled: !!nameOrId,
   })
 }
+
+// enable nameor id hace la peticion cuando se ha ingresado el nombre o id del pokemon detectando si el pedio fue correcto o no

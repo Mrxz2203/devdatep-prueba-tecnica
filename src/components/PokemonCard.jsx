@@ -18,10 +18,11 @@ const typeColors = {
   ghost: 'bg-purple-700',
   steel: 'bg-gray-500',
 }
+// Se establecen los colores para cada pokemon
 
 function PokemonCard({ name, image, types, id }) {
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-4 flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-4 flex flex-col items-center gap-2 cursor-pointer">
       <span className="text-xs text-gray-400 self-end">#{String(id).padStart(3, '0')}</span>
       <img src={image} alt={name} className="w-24 h-24 object-contain" />
       <h2 className="font-bold text-gray-700 capitalize text-lg">{name}</h2>
@@ -40,3 +41,7 @@ function PokemonCard({ name, image, types, id }) {
 }
 
 export default PokemonCard
+
+//typecolor le da cada color al pokemon predterminado.
+// { name, image, types, id } → Son las props, de cada elemento
+// types.map() , Recorre todos los tipos del pokémon 

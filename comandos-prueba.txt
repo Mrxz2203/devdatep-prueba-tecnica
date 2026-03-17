@@ -1,0 +1,10 @@
+Comandos:
+Para inicializar el proyecto: npm create vite@latest . -- --template react
+dependencias: 
+npm install react-router-dom @tanstack/react-query react-hook-form zod @hookform/resolvers
+tailwind:
+npm install -D tailwindcss@3 postcss autoprefixer
+ejecucion de tailwind:
+npx tailwindcss init -p
+Para inicializar y ejcutar el proyecto:
+npm run dev
