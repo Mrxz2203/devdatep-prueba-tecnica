@@ -3,7 +3,10 @@ import { useForm } from 'react-hook-form'
 import { usePokemons, usePokemonDetail } from '../hooks/usePokemons'
 import PokemonCard from '../components/PokemonCard'
 import PokemonSkeleton from '../components/PokemonSkeleton'
-
+// Elegi el Api de pokemon por ser la mas practica 
+// Se importa el uso del card y skeleton de pokemon
+// search guarda y recibe el dato del pokemon pedido
+// el submit maneja el formulario enviado 
 function HomePage() {
   const [search, setSearch] = useState('')
   const { register, handleSubmit } = useForm()
@@ -20,6 +23,8 @@ function HomePage() {
     setSearch('')
   }
 
+  // las opciones de buscar y limpiar, de los botones del buscador 
+// Limite de 20 pokemones y search busca el pokemon
   const renderCards = () => {
     if (search) {
       if (isSearching) return <PokemonSkeleton />
@@ -34,7 +39,9 @@ function HomePage() {
         />
       )
     }
-
+    // si busca el pokemon, estará cargando y mostrara el skeleton
+    // sino hay se arrojara que no hay ningun pokemon
+    // cuando lo encuentre le retornara los campos de la variable (pokemon) buscado
     if (isLoading) {
       return Array.from({ length: 20 }).map((_, i) => <PokemonSkeleton key={i} />)
     }
@@ -43,11 +50,12 @@ function HomePage() {
       <PokemonDetailCard key={poke.name} name={poke.name} index={index} />
     ))
   }
+  // se arroja 20 ids de pokemon cuando entras al homepage 
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8">
       {/* Header */}
-      <h1 className="text-4xl font-bold text-center text-red-500 mb-8">PokéApp 🔴</h1>
+      <h1 className="text-4xl font-bold text-center text-red-500 mb-8">PokéApp - Devdatep 🔴</h1>
 
       {/* Search */}
       <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-2 mb-8">
@@ -81,8 +89,7 @@ function HomePage() {
     </div>
   )
 }
-
-// Componente auxiliar para cargar el detalle de cada pokemon de la lista
+// las opciones de boton y limpiar de la pagina y el grid
 function PokemonDetailCard({ name }) {
   const { data, isLoading } = usePokemonDetail(name)
 
@@ -99,5 +106,6 @@ function PokemonDetailCard({ name }) {
     />
   )
 }
-
+// Componente auxiliar para cargar el detalle de cada pokemon de la lista
+// cuando ya el api recibe la informacion muestra el card brindadno la data de la variable
 export default HomePage
