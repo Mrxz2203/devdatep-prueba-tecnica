@@ -1,0 +1,3 @@
+Mejorar si está acercando el nombre de carga foneticamente -> dentro de la funcionalidad dle homepage.
+Mejora del titulo - agregar Pokebola dentro del titulo.
+Mejoras nivel 1
