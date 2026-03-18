@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { usePokemons, usePokemonDetail } from '../hooks/usePokemons'
+import { usePokemons, useAllPokemonNames, usePokemonDetail } from '../hooks/usePokemons'
 import PokemonCard from '../components/PokemonCard'
 import PokemonSkeleton from '../components/PokemonSkeleton'
 // Elegi el Api de pokemon por ser la mas practica 
@@ -13,8 +13,13 @@ function HomePage() {
 
   const { data, isLoading } = usePokemons({ limit: 20 })
 
-  const { data: searchResult, isLoading: isSearching } = usePokemonDetail(search)
 
+  const { data: allNames } = useAllPokemonNames() // agregado de busqueda de pokemones foneticamente
+
+const filteredNames = allNames?.filter((p) =>
+  p.name.includes(search.toLowerCase().trim())
+) ?? []
+// revisa si el texto buscado **está contenido** dentro del nombre
   const onSubmit = (values) => {
     setSearch(values.search.toLowerCase().trim())
   }
@@ -26,36 +31,36 @@ function HomePage() {
   // las opciones de buscar y limpiar, de los botones del buscador 
 // Limite de 20 pokemones y search busca el pokemon
   const renderCards = () => {
-    if (search) {
-      if (isSearching) return <PokemonSkeleton />
-      if (!searchResult) return <p className="text-gray-500">No se encontró ningún pokémon.</p>
-      return (
-        <PokemonCard
-          key={searchResult.id}
-          id={searchResult.id}
-          name={searchResult.name}
-          image={searchResult.sprites.other['official-artwork'].front_default}
-          types={searchResult.types.map((t) => t.type.name)}
-        />
-      )
+  if (search) {
+    if (filteredNames.length === 0) {
+      return <p className="text-gray-500 col-span-full text-center">No se encontró ningún pokémon.</p>
     }
-    // si busca el pokemon, estará cargando y mostrara el skeleton
-    // sino hay se arrojara que no hay ningun pokemon
-    // cuando lo encuentre le retornara los campos de la variable (pokemon) buscado
-    if (isLoading) {
-      return Array.from({ length: 20 }).map((_, i) => <PokemonSkeleton key={i} />)
-    }
-
-    return data?.results.map((poke, index) => (
-      <PokemonDetailCard key={poke.name} name={poke.name} index={index} />
+    return filteredNames.map((poke) => (
+      <PokemonDetailCard key={poke.name} name={poke.name} />
     ))
   }
+
+  if (isLoading) {
+    return Array.from({ length: 20 }).map((_, i) => <PokemonSkeleton key={i} />)
+  }
+
+  return data?.results.map((poke) => (
+    <PokemonDetailCard key={poke.name} name={poke.name} />
+  ))
+}
+   // si busca el pokemon, estará cargando y mostrara el skeleton
+    // sino hay se arrojara que no hay ningun pokemon
+    // cuando lo encuentre le retornara los campos de la variable (pokemon) buscado
   // se arroja 20 ids de pokemon cuando entras al homepage 
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8">
       {/* Header */}
-      <h1 className="text-4xl font-bold text-center text-red-500 mb-8">PokéApp - Devdatep 🔴</h1>
+    <div className="flex items-center justify-center gap-3 mb-8">
+      <img src = "/pokebola.png" alt="pokebola" className=" w-10 h-10"/>
+<h1 className="text-4xl font-bold text-red-500">Pokeapp</h1>
+<img src="/pokebola.png" alt=" pokebola" className=" w-10 h-10"/>
+    </div>
 
       {/* Search */}
       <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-2 mb-8">

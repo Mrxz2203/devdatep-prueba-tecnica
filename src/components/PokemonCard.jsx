@@ -41,7 +41,6 @@ function PokemonCard({ name, image, types, id }) {
 }
 
 export default PokemonCard
-
 //typecolor le da cada color al pokemon predterminado.
 // { name, image, types, id } → Son las props, de cada elemento
 // types.map() , Recorre todos los tipos del pokémon 
