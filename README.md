@@ -1,16 +1,22 @@
-# React + Vite
+# PokéApp - Devdatep 🔴
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web que consume la PokeAPI y muestra información de pokémon listado en solo los 20 primeros. 
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías usadas
+- React + Vite
+- React Query
+- React Hook Form
+- Tailwind CSS v3
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✅ Funcionalidades - Nivel 1
+- Lista de 20 pokémon desde la PokeAPI
+- Búsqueda fonética (ej: escribir "char" encuentra "charizard", "charmeleon", "charmander")
+- Skeletons de carga animados mientras se obtienen los datos
+- Diseño responsivo (móvil, tablet y desktop)
+- Tarjetas con imagen, número, nombre y tipos de colores
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Estructura de carpetas
+- components como pokemoncard.jsx, pokemonskeleton.jsx
+- hooks en usepokemon.jsx
+- service en pokemonservice.jsx
+- y en public la imagen pokebola.png
