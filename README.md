@@ -9,7 +9,7 @@ npx tailwindcss init -p
 # Para inicializar y ejecutar el proyecto:
 npm run dev
 # Informacion principal:
-# PokéApp - Pagina Devdatep 🔴
+# PokéApp 
 
 Aplicación web que consume la PokeAPI, desarrollada como prueba técnica.
 
