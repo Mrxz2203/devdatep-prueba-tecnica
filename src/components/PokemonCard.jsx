@@ -1,3 +1,5 @@
+import { useNavigate }  from "react-router-dom"
+// importamos la navegacion entre las cards
 const typeColors = {
   fire: 'bg-orange-400',
   water: 'bg-blue-400',
@@ -19,10 +21,14 @@ const typeColors = {
   steel: 'bg-gray-500',
 }
 // Se establecen los colores para cada pokemon
-
+// se hace el uso de navigate para cada pokemon
 function PokemonCard({ name, image, types, id }) {
+  const navigate = useNavigate()
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-4 flex flex-col items-center gap-2 cursor-pointer">
+    <div
+      onClick={() => navigate(`/pokemon/${name}`)}
+      className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-4 flex
+       flex-col items-center gap-2 cursor-pointer">
       <span className="text-xs text-gray-400 self-end">#{String(id).padStart(3, '0')}</span>
       <img src={image} alt={name} className="w-24 h-24 object-contain" />
       <h2 className="font-bold text-gray-700 capitalize text-lg">{name}</h2>
@@ -41,6 +47,7 @@ function PokemonCard({ name, image, types, id }) {
 }
 
 export default PokemonCard
+// con el onclick ahora la tarjeta es clickeable
 //typecolor le da cada color al pokemon predterminado.
 // { name, image, types, id } → Son las props, de cada elemento
 // types.map() , Recorre todos los tipos del pokémon 

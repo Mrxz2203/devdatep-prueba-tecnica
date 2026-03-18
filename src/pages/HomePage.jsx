@@ -3,18 +3,23 @@ import { useForm } from 'react-hook-form'
 import { usePokemons, useAllPokemonNames, usePokemonDetail } from '../hooks/usePokemons'
 import PokemonCard from '../components/PokemonCard'
 import PokemonSkeleton from '../components/PokemonSkeleton'
+import { useNavigate } from 'react-router-dom'
 // Elegi el Api de pokemon por ser la mas practica 
 // Se importa el uso del card y skeleton de pokemon
 // search guarda y recibe el dato del pokemon pedido
 // el submit maneja el formulario enviado 
 function HomePage() {
+  const navigate = useNavigate()
   const [search, setSearch] = useState('')
+  const [page, setPage] = useState(0) // estado de pagina de cada uno de los pokemones
   const { register, handleSubmit } = useForm()
 
-  const { data, isLoading } = usePokemons({ limit: 20 })
+ const { data, isLoading } = usePokemons({ limit: 20, offset: page * 20 })
 
 
   const { data: allNames } = useAllPokemonNames() // agregado de busqueda de pokemones foneticamente
+
+  
 
 const filteredNames = allNames?.filter((p) =>
   p.name.includes(search.toLowerCase().trim())
@@ -61,7 +66,15 @@ const filteredNames = allNames?.filter((p) =>
 <h1 className="text-4xl font-bold text-red-500">Pokeapp</h1>
 <img src="/pokebola.png" alt=" pokebola" className=" w-10 h-10"/>
     </div>
-
+{/* Botón del formulario */}
+<div className="flex justify-center mb-6">
+  <button
+    onClick={() => navigate('/formulario')}
+    className="bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-600 transition-colors"
+  >
+    📝 Mejora de dato del Pokemon
+  </button>
+</div>
       {/* Search */}
       <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-2 mb-8">
         <input
@@ -91,7 +104,25 @@ const filteredNames = allNames?.filter((p) =>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
         {renderCards()}
       </div>
+      {/* Paginación */}
+<div className="flex justify-center items-center gap-4 mt-8">
+  <button
+    onClick={() => setPage((p) => p - 1)}
+    disabled={page === 0}
+    className="bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    ← Anterior
+  </button>
+  <span className="text-gray-600 font-bold">Página {page + 1}</span>
+  <button
+    onClick={() => setPage((p) => p + 1)}
+    className="bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-600 transition-colors"
+  >
+    Siguiente →
+  </button>
+</div>
     </div>
+    
   )
 }
 // las opciones de boton y limpiar de la pagina y el grid
