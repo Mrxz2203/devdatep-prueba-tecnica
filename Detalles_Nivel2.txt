@@ -1,0 +1,9 @@
+Mejoras antes del nivel 3:
+Jefa:
+Uso de libreria de iconos -> Level 2. X
+Corregi el opcion de button de agregar nota por mejor libreria X
+Paleta de colores de pokemon usa tunees la pagina - general para optimizar el diseño. (+ vista del elemento) para todos los pokemones X
+Agregar una pagina de bienvenida antes del homepage.
+Agregar pagina para el inicio de pokemon -> Aunque usaria para una advertencia.
+Jefe:
+Mejorar el orden de carpetas del uso de Zo, mas limpio el orden. X

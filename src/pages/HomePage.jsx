@@ -4,6 +4,9 @@ import { usePokemons, useAllPokemonNames, usePokemonDetail } from '../hooks/useP
 import PokemonCard from '../components/PokemonCard'
 import PokemonSkeleton from '../components/PokemonSkeleton'
 import { useNavigate } from 'react-router-dom'
+// Importa el uso de lucide react libreria para mejorar el aspecto visual
+// search para buscar, x para limpiar, cheveron para izq y der, file para el texto
+import { Search, X, ChevronLeft, ChevronRight, FileText } from 'lucide-react'
 // Elegi el Api de pokemon por ser la mas practica 
 // Se importa el uso del card y skeleton de pokemon
 // search guarda y recibe el dato del pokemon pedido
@@ -14,17 +17,15 @@ function HomePage() {
   const [page, setPage] = useState(0) // estado de pagina de cada uno de los pokemones
   const { register, handleSubmit } = useForm()
 
- const { data, isLoading } = usePokemons({ limit: 20, offset: page * 20 })
-
+  const { data, isLoading } = usePokemons({ limit: 20, offset: page * 20 })
 
   const { data: allNames } = useAllPokemonNames() // agregado de busqueda de pokemones foneticamente
 
-  
+  const filteredNames = allNames?.filter((p) =>
+    p.name.includes(search.toLowerCase().trim())
+  ) ?? []
+  // revisa si el texto buscado **está contenido** dentro del nombre
 
-const filteredNames = allNames?.filter((p) =>
-  p.name.includes(search.toLowerCase().trim())
-) ?? []
-// revisa si el texto buscado **está contenido** dentro del nombre
   const onSubmit = (values) => {
     setSearch(values.search.toLowerCase().trim())
   }
@@ -34,67 +35,72 @@ const filteredNames = allNames?.filter((p) =>
   }
 
   // las opciones de buscar y limpiar, de los botones del buscador 
-// Limite de 20 pokemones y search busca el pokemon
+  // Limite de 20 pokemones y search busca el pokemon
   const renderCards = () => {
-  if (search) {
-    if (filteredNames.length === 0) {
-      return <p className="text-gray-500 col-span-full text-center">No se encontró ningún pokémon.</p>
+    if (search) {
+      if (filteredNames.length === 0) {
+        return <p className="text-pika-brown col-span-full text-center font-semibold">No se encontró ningún pokémon.</p>
+      }
+      return filteredNames.map((poke) => (
+        <PokemonDetailCard key={poke.name} name={poke.name} />
+      ))
     }
-    return filteredNames.map((poke) => (
+    // si busca el pokemon, estará cargando y mostrara el skeleton
+    // sino hay se arrojara que no hay ningun pokemon
+    // cuando lo encuentre le retornara los campos de la variable (pokemon) buscado
+
+    if (isLoading) {
+      return Array.from({ length: 20 }).map((_, i) => <PokemonSkeleton key={i} />)
+    }
+
+    // se arroja 20 ids de pokemon cuando entras al homepage 
+    return data?.results.map((poke) => (
       <PokemonDetailCard key={poke.name} name={poke.name} />
     ))
   }
-
-  if (isLoading) {
-    return Array.from({ length: 20 }).map((_, i) => <PokemonSkeleton key={i} />)
-  }
-
-  return data?.results.map((poke) => (
-    <PokemonDetailCard key={poke.name} name={poke.name} />
-  ))
-}
-   // si busca el pokemon, estará cargando y mostrara el skeleton
-    // sino hay se arrojara que no hay ningun pokemon
-    // cuando lo encuentre le retornara los campos de la variable (pokemon) buscado
-  // se arroja 20 ids de pokemon cuando entras al homepage 
-
+// nuevo agregado de la pantalla con lucide react con fondo de pikachu para las secciones
   return (
-    <div className="min-h-screen bg-gray-100 px-4 py-8">
-      {/* Header */}
-    <div className="flex items-center justify-center gap-3 mb-8">
-      <img src = "/pokebola.png" alt="pokebola" className=" w-10 h-10"/>
-<h1 className="text-4xl font-bold text-red-500">Pokeapp</h1>
-<img src="/pokebola.png" alt=" pokebola" className=" w-10 h-10"/>
-    </div>
-{/* Botón del formulario */}
-<div className="flex justify-center mb-6">
-  <button
-    onClick={() => navigate('/formulario')}
-    className="bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-600 transition-colors"
-  >
-    📝 Mejora de dato del Pokemon
-  </button>
-</div>
-      {/* Search */}
+    <div className="min-h-screen bg-pika-yellowLight px-4 py-8">
+      {/* Header - actualizado con colores de pikachu */}
+      <div className="flex items-center justify-center gap-3 mb-4">
+        <img src="/pokebola.png" alt="pokebola" className="w-10 h-10"/>
+        <h1 className="text-4xl font-bold text-pika-dark">PokéApp</h1>
+        <img src="/pokebola.png" alt="pokebola" className="w-10 h-10"/>
+      </div>
+
+      {/* Botón del formulario - actualizado con colores de pikachu  */}
+      <div className="flex justify-center mb-6">
+        <button
+          onClick={() => navigate('/formulario')}
+          className="flex items-center gap-2 bg-pika-yellow text-pika-dark font-semibold px-6 py-2 rounded-xl hover:bg-pika-yellowDark transition-colors shadow-md"
+        >
+          <FileText size={18} />
+          Optimizacion del Pokemon
+        </button>
+      </div>
+
+      {/* Search - actualizado con colores de pikachu  */}
       <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-2 mb-8">
         <input
           {...register('search')}
           type="text"
           placeholder="Buscar pokémon..."
-          className="border border-gray-300 rounded-xl px-4 py-2 w-full max-w-sm focus:outline-none focus:ring-2 focus:ring-red-400"
+          className="border-2 border-pika-yellow rounded-xl px-4 py-2 w-full max-w-sm focus:outline-none focus:ring-2 focus:ring-pika-yellowDark bg-white"
         />
         <button
           type="submit"
-          className="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600 transition-colors"
+          className="flex items-center gap-2 bg-pika-yellow text-pika-dark font-semibold px-4 py-2 rounded-xl hover:bg-pika-yellowDark transition-colors shadow-md"
         >
+          <Search size={18} />
           Buscar
         </button>
         {search && (
           <button
             type="button"
             onClick={onClear}
-            className="bg-gray-300 text-gray-700 px-4 py-2 rounded-xl hover:bg-gray-400 transition-colors"
+            className="flex items-center gap-2 bg-pika-dark text-white px-4 py-2 rounded-xl hover:opacity-80 transition-colors shadow-md"
           >
+            <X size={18} />
             Limpiar
           </button>
         )}
@@ -104,27 +110,31 @@ const filteredNames = allNames?.filter((p) =>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
         {renderCards()}
       </div>
-      {/* Paginación */}
-<div className="flex justify-center items-center gap-4 mt-8">
-  <button
-    onClick={() => setPage((p) => p - 1)}
-    disabled={page === 0}
-    className="bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-  >
-    ← Anterior
-  </button>
-  <span className="text-gray-600 font-bold">Página {page + 1}</span>
-  <button
-    onClick={() => setPage((p) => p + 1)}
-    className="bg-red-500 text-white px-6 py-2 rounded-xl hover:bg-red-600 transition-colors"
-  >
-    Siguiente →
-  </button>
-</div>
+
+      {/* Paginación - actualizado con colores de pikachu  */}
+      {/* Uso del chevron para la paginacion */}
+      <div className="flex justify-center items-center gap-4 mt-8">
+        <button
+          onClick={() => setPage((p) => p - 1)}
+          disabled={page === 0}
+          className="flex items-center gap-2 bg-pika-yellow text-pika-dark font-semibold px-6 py-2 rounded-xl hover:bg-pika-yellowDark transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <ChevronLeft size={18} />
+          Anterior
+        </button>
+        <span className="text-pika-dark font-bold">Página {page + 1}</span>
+        <button
+          onClick={() => setPage((p) => p + 1)}
+          className="flex items-center gap-2 bg-pika-yellow text-pika-dark font-semibold px-6 py-2 rounded-xl hover:bg-pika-yellowDark transition-colors shadow-md"
+        >
+          Siguiente
+          <ChevronRight size={18} />
+        </button>
+      </div>
     </div>
-    
   )
 }
+
 // las opciones de boton y limpiar de la pagina y el grid
 function PokemonDetailCard({ name }) {
   const { data, isLoading } = usePokemonDetail(name)
