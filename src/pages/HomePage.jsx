@@ -69,7 +69,7 @@ function HomePage() {
         <img src="/pokebola.png" alt="pokebola" className="w-10 h-10"/>
       </div>
 
-      {/* Botón del formulario - actualizado con colores de pikachu  */}
+      {/* Botón del formulario Y CREAR API JSON DEL POST - actualizado con colores de pikachu  */}
       <div className="flex justify-center mb-6">
         <button
           onClick={() => navigate('/formulario')}
@@ -78,6 +78,15 @@ function HomePage() {
           <FileText size={18} />
           Optimizacion del Pokemon
         </button>
+
+
+        <button
+    onClick={() => navigate('/posts')}
+    className="flex items-center gap-2 bg-pika-dark text-pika-yellow font-semibold px-6 py-2 rounded-xl hover:opacity-80 transition-colors shadow-md"
+  >
+    <FileText size={18} />
+    Ver Posts
+  </button>
       </div>
 
       {/* Search - Colores actualizadas del pikachu*/}
