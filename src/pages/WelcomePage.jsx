@@ -67,11 +67,12 @@ function Navbar() {
 {/* SECCION INICIO DEL HERO */}
 function HeroSection() {
   const navigate = useNavigate();
-
+  {/* CABECERA */}
   return (
     <section
       id="inicio"
       // Se ajusta pt-24 para compensar el navbar sticky
+    
       className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center px-6 lg:px-24 py-16 pt-24 gap-10"
     >
       <div className="flex flex-col gap-6 max-w-lg text-center lg:text-left items-center lg:items-start">
@@ -173,9 +174,7 @@ function AboutSection() {
   const navigate = useNavigate();
 // uso de las tecnologias principales
   const technologies = [
-    "React 18",
     "React Query",
-    "React Router 6",
     "Tailwind CSS",
     "Zod",
     "Lucide React",

@@ -1,11 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
+import WelcomePage from './pages/WelcomePage'
 import HomePage from './pages/HomePage'
 import PokemonDetailPage from './pages/PokemonDetailPage'
 import FormularioPokemon from './pages/FormularioPokemon'
-import WelcomePage from './pages/WelcomePage'
+import PostsPage from './pages/PostsPage'
+import PostDetailPage from './pages/PostDetailPage'
  // donde estan las rutas es routes 
  // route que seccion o componente se mostrara 
  
+
 function App() {
   return (
     <Routes>
@@ -13,6 +16,8 @@ function App() {
       <Route path="/home" element={<HomePage />} />
        <Route path="/pokemon/:name" element={<PokemonDetailPage />} />
        <Route path="/formulario" element={<FormularioPokemon/>}/>
+<Route path="/posts" element={<PostsPage />} />
+      <Route path="/posts/:id" element={<PostDetailPage />} />
     </Routes>
   )
 }
