@@ -1,5 +1,6 @@
-import { useNavigate }  from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 // importamos la navegacion entre las cards
+// nuevo agregado de paleta de colores y actualizacion del react lucide icons
 const typeColors = {
   fire: 'bg-orange-400',
   water: 'bg-blue-400',
@@ -22,16 +23,18 @@ const typeColors = {
 }
 // Se establecen los colores para cada pokemon
 // se hace el uso de navigate para cada pokemon
+
 function PokemonCard({ name, image, types, id }) {
   const navigate = useNavigate()
+// Se agregar los bores usando el color de pikachu para la pagina , tarjetas, el numero del pokemon
   return (
     <div
       onClick={() => navigate(`/pokemon/${name}`)}
-      className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-4 flex
-       flex-col items-center gap-2 cursor-pointer">
-      <span className="text-xs text-gray-400 self-end">#{String(id).padStart(3, '0')}</span>
+      className="bg-white border-2 border-pika-yellow rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-4 flex flex-col items-center gap-2 cursor-pointer"
+    >
+      <span className="text-xs text-pika-brown self-end font-semibold">#{String(id).padStart(3, '0')}</span>
       <img src={image} alt={name} className="w-24 h-24 object-contain" />
-      <h2 className="font-bold text-gray-700 capitalize text-lg">{name}</h2>
+      <h2 className="font-bold text-pika-dark capitalize text-lg">{name}</h2>
       <div className="flex gap-2">
         {types.map((t) => (
           <span
@@ -48,6 +51,6 @@ function PokemonCard({ name, image, types, id }) {
 
 export default PokemonCard
 // con el onclick ahora la tarjeta es clickeable
-//typecolor le da cada color al pokemon predterminado.
+// typecolor le da cada color al pokemon predterminado.
 // { name, image, types, id } → Son las props, de cada elemento
-// types.map() , Recorre todos los tipos del pokémon 
+// types.map() , Recorre todos los tipos del pokémon
