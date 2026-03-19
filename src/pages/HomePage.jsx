@@ -4,9 +4,10 @@ import { usePokemons, useAllPokemonNames, usePokemonDetail } from '../hooks/useP
 import PokemonCard from '../components/PokemonCard'
 import PokemonSkeleton from '../components/PokemonSkeleton'
 import { useNavigate } from 'react-router-dom'
+
 // Importa el uso de lucide react libreria para mejorar el aspecto visual
 // search para buscar, x para limpiar, cheveron para izq y der, file para el texto
-import { Search, X, ChevronLeft, ChevronRight, FileText } from 'lucide-react'
+import { Search, X, ChevronLeft, ChevronRight, FileText, ArrowLeft } from 'lucide-react'
 // Elegi el Api de pokemon por ser la mas practica 
 // Se importa el uso del card y skeleton de pokemon
 // search guarda y recibe el dato del pokemon pedido
@@ -79,32 +80,42 @@ function HomePage() {
         </button>
       </div>
 
-      {/* Search - actualizado con colores de pikachu  */}
-      <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-2 mb-8">
-        <input
-          {...register('search')}
-          type="text"
-          placeholder="Buscar pokémon..."
-          className="border-2 border-pika-yellow rounded-xl px-4 py-2 w-full max-w-sm focus:outline-none focus:ring-2 focus:ring-pika-yellowDark bg-white"
-        />
-        <button
-          type="submit"
-          className="flex items-center gap-2 bg-pika-yellow text-pika-dark font-semibold px-4 py-2 rounded-xl hover:bg-pika-yellowDark transition-colors shadow-md"
-        >
-          <Search size={18} />
-          Buscar
-        </button>
-        {search && (
-          <button
-            type="button"
-            onClick={onClear}
-            className="flex items-center gap-2 bg-pika-dark text-white px-4 py-2 rounded-xl hover:opacity-80 transition-colors shadow-md"
-          >
-            <X size={18} />
-            Limpiar
-          </button>
-        )}
-      </form>
+      {/* Search - Colores actualizadas del pikachu*/}
+<form onSubmit={handleSubmit(onSubmit)} className="flex justify-center gap-2 mb-8">
+  {/* Botón volver al inicio */}
+  <button
+    type="button"
+    onClick={() => navigate('/')}
+    className="flex items-center gap-2 bg-pika-brown text-white px-4 py-2 rounded-xl hover:opacity-80 transition-colors shadow-md"
+  >
+    <ArrowLeft size={18} />
+    Inicio
+  </button>
+   {/* Buscador */}
+  <input
+    {...register('search')}
+    type="text"
+    placeholder="Buscar pokémon..."
+    className="border-2 border-pika-yellow rounded-xl px-4 py-2 w-full max-w-sm focus:outline-none focus:ring-2 focus:ring-pika-yellowDark bg-white"
+  />
+  <button
+    type="submit"
+    className="flex items-center gap-2 bg-pika-yellow text-pika-dark font-semibold px-4 py-2 rounded-xl hover:bg-pika-yellowDark transition-colors shadow-md"
+  >
+    <Search size={18} />
+    Buscar
+  </button>
+  {search && (
+    <button
+      type="button"
+      onClick={onClear}
+      className="flex items-center gap-2 bg-pika-dark text-white px-4 py-2 rounded-xl hover:opacity-80 transition-colors shadow-md"
+    >
+      <X size={18} />
+      Limpiar
+    </button>
+  )}
+</form>
 
       {/* Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
