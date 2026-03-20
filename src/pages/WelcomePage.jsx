@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 // Importación necesaria para el scroll suave
 // importamos el navhash para la navegacion
 import { NavHashLink } from "react-router-hash-link";
-import { Sparkles, Zap, Search, BookOpen } from "lucide-react";
+import { Sparkles,Search, BookOpen, ScrollText } from "lucide-react";
 // importamos el lucidereact
 {/* SECCION PRINCIPAL DEL WELCOMEPAGE */}
 function WelcomePage() {
@@ -82,7 +82,7 @@ function HeroSection() {
         </h1>
 
         <p className="text-pika-brown text-lg max-w-md">
-          Busca, descubre y conoce a todos tus pokémon favoritos. Tu pokédex digital te espera.
+          Busca, descubre y conoce a todos tus pokémon favoritos. Pokeapp te espera.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -107,7 +107,7 @@ function HeroSection() {
       <img
         src="/pikachu.png"
         alt="Pikachu saludando felizmente"
-        className="w-64 md:w-80 lg:w-[400px] object-contain animate-fade-in" // añadido un tamaño extra grande opcional y animación sutil
+        className="w-64 md:w-80 lg:w-[400px] object-contain animate-fade-in" // añadido el tamaño adecuado para un welcomepage
       />
     </section>
   );
@@ -127,9 +127,9 @@ function FeaturesSection() {
       text: "Consulta estadísticas base, habilidades, tipos, evoluciones, altura y peso.",
     },
     {
-      icon: <Zap size={32} />,
-      title: "Rápido y Moderno",
-      text: "Navegación instantánea y datos siempre actualizados gracias a React Query.",
+      icon: <ScrollText size={32} />,
+      title: "Creacion de Posts en JSON",
+      text: "Te presentamos una lista del uso de datos del API JSON donde puedes crear tus posts personalizados.",
     },
   ];
 
@@ -179,6 +179,11 @@ function AboutSection() {
     "Zod",
     "Lucide React",
     "Vite",
+    "Toast",
+    "Hash",
+    "Axios",
+    "React Router",
+    "eslint",
   ];
 
   return (
