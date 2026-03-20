@@ -8,7 +8,8 @@ import { usePostById, useUpdatePost, useDeletePost } from '../hooks/usePosts'
 import { postSchema } from '../schemas/postSchema'
 import { ArrowLeft, Pencil, Trash2, Save, X } from 'lucide-react'
 // importamos el uso del zod y sus validaciones como el uso de la libreria react
-
+import PageLoader from '../../../components/PageLoader'
+// importamos el uso de pageloader para la funcion carga de pokeboña
 function PostDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -45,13 +46,8 @@ function PostDetailPage() {
       onSuccess: () => navigate('/posts')
     })
   }
-// funcionalid de subir el post con eliminar el post
-  if (isLoading) return (
-    <div className="min-h-screen bg-pika-yellowLight flex items-center justify-center">
-      <p className="text-pika-brown text-xl font-semibold">Cargando...</p>
-    </div>
-  )
-
+// funcionalid de subir el post con eliminar el post + la nueva funciona loading UI de components
+ if (isLoading) return <PageLoader message="Cargando post..." />
   if (isError) return (
     <div className="min-h-screen bg-pika-yellowLight flex items-center justify-center">
       <p className="text-red-500 text-xl font-semibold">Error al cargar el post.</p>
