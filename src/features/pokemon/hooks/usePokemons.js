@@ -1,8 +1,7 @@
 // uso de reactquery como puente de informacion del api en useQuery
 import { useQuery } from '@tanstack/react-query'
 // maneja el cache de los datos 
-import { getPokemonDetail, getPokemons } from '../services/pokemonService'
-import { getallPokemonNames }  from '../services/pokemonService'
+import { getPokemonDetail, getPokemons, getallPokemonNames } from '../services/pokemonService'
 
 export const usePokemons = ({ limit = 20, offset = 0 } = {}) => {
   return useQuery({
