@@ -5,19 +5,16 @@ import { usePokemonDetail } from '../hooks/usePokemons'
 import { ArrowLeft, Ruler, Weight } from 'lucide-react'
 // el useparams lee los parametros de la url del api de los pokemons
 // navigate para navegar entre paginas, y detail para la info de los pokemones
-
+import PageLoader from '../../../components/PageLoader'
+// importamos el uso de carga de pagina aplicando UI
 function PokemonDetailPage() {
   const { name } = useParams()
   const navigate = useNavigate()
   const { data, isLoading, isError } = usePokemonDetail(name)
   // el useparams extrañe el nombre del pokemon ingresado y en detail procede a buscarlo del api
 
-  if (isLoading) return (
-    <div className="min-h-screen bg-pika-yellowLight flex items-center justify-center">
-      <p className="text-pika-brown text-xl font-semibold">Cargando...</p>
-    </div>
-  )
-// agregado en el loading como error el uso de pikachu colores
+ if (isLoading) return <PageLoader message="Cargando pokémon..." />
+// agregado en el loading como error el uso de pikachu colores + el nuevo UI de components
   if (isError) return (
     <div className="min-h-screen bg-pika-yellowLight flex items-center justify-center">
       <p className="text-red-500 text-xl font-semibold">Error al cargar el pokémon.</p>
