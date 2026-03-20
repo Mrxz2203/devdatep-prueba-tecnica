@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { postSchema } from "../features/posts/schemas/postSchema"
+import { postSchema } from "../schemas/postSchema"
 import { useState } from 'react'
 // importe de las herramientas de la libreria lucide react
 import { ArrowLeft, Send, RefreshCw, FileText, User, AlignLeft } from 'lucide-react'
