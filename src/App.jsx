@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import WelcomePage from './pages/WelcomePage'
-import FormularioPokemon from './pages/FormularioPokemon'
+import FormularioPokemon from './features/posts/pages/FormularioPokemon'
 import HomePage from './features/pokemon/pages/HomePage'
 import PokemonDetailPage from './features/pokemon/pages/PokemonDetailPage'
 import PostsPage from './features/posts/pages/PostsPage'
